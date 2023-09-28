@@ -86,6 +86,7 @@ btn.addEventListener('click', async (e) => {
         if(newOrder.status == 200){
             let res = newOrder.json();
             console.log(res)
+            cartNumber();
       
         }
     })
@@ -157,9 +158,9 @@ console.log(customerToken)
   })
   if(result.status == 200){
     let response = await result.json();
-    // console.log(response)
+    console.log(response)
     // console.log("response id")
-    const id = response[0].id;
+    const id = response.id;
     // console.log(id) 
 
     //store customer id in localstorage
@@ -184,14 +185,14 @@ console.log(customerToken)
 
     if(rs.status == 200){
         let orderArray = await rs.json();
-        console.log(orders)
+        console.log(orderArray)
 
         //deconstruct order from array
         const {order } = orderArray;
         const orderCount = order.reduce((count, items)=> {
             return count + 1;
         }, 0)
-
+        console.log("order count")
         console.log(orderCount)
         
         const cList = document.querySelector('.cart-number')
